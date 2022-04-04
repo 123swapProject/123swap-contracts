@@ -32,24 +32,6 @@ module.exports = async function ({ ethers, deployments, getNamedAccounts }) {
       dev
     );
   }
-
-  const { mcDummyAddress } = await deploy("SimpleERC20", {
-    from: dev,
-    args: ["MCDUMMY", "MCDUMMY", "1"],
-    log: true,
-    deterministicDeployment: false
-  })
-
-  console.log("Pool lenght " await OneTwoThreeMasterChef.poolLength());
-  if (await OneTwoThreeMasterChef.poolLength() === 0) {
-    console.log("Transfer ownership of OneTwoThreeMasterChef to dev")
-    await execute(
-      'OneTwoThreeMasterChef',
-      {from: dev, log: true},
-      'add',
-      1000, mcDummyAddress, false
-    );
-  }
 }
 
 module.exports.tags = ["OneTwoThreeMasterChef"]
